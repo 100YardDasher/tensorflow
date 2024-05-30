@@ -18,6 +18,7 @@ limitations under the License.
 
 #include <memory>
 #include <ostream>
+#include <string>
 #include <string_view>
 #include <type_traits>
 #include <utility>
@@ -53,14 +54,19 @@ class Thunk {
     kWhile,
   };
 
+  struct Info {
+    std::string name;
+  };
+
   virtual ~Thunk() = default;
 
   Thunk(const Thunk&) = delete;
   Thunk& operator=(const Thunk&) = delete;
 
-  explicit Thunk(Kind kind) : kind_(kind) {}
+  explicit Thunk(Kind kind, Info info) : kind_(kind), info_(std::move(info)) {}
 
   Kind kind() const { return kind_; }
+  std::string_view name() const { return info_.name; }
 
   static std::string_view KindToString(Kind kind);
 
@@ -93,6 +99,7 @@ class Thunk {
 
  private:
   Kind kind_;
+  Info info_;
 };
 
 std::ostream& operator<<(std::ostream& os, Thunk::Kind kind);

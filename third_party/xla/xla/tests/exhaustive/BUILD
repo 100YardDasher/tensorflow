@@ -25,7 +25,10 @@ cc_library(
     testonly = True,
     srcs = ["exhaustive_op_test_utils.cc"],
     hdrs = ["exhaustive_op_test_utils.h"],
-    tags = ["no_pip"],
+    tags = [
+        "no_pip",
+        "test_xla_cpu_thunks",
+    ],
     deps = [
         "//xla:bit_cast",
         "//xla:shape_util",
@@ -45,7 +48,10 @@ cc_library(
     name = "exhaustive_unary_test_f32_or_smaller_lib",
     testonly = True,
     srcs = ["exhaustive_unary_test_f32_or_smaller.cc"],
-    tags = ["no_pip"],
+    tags = [
+        "no_pip",
+        "test_xla_cpu_thunks",
+    ],
     deps = [
         ":exhaustive_op_test_utils",
         "//xla:util",
@@ -66,6 +72,7 @@ xla_test(
     shard_count = 50,
     tags = [
         "optonly",
+        "test_xla_cpu_thunks",
         # This is a big test that we skip for capacity reasons in OSS testing.
         "no_oss",
     ],
@@ -83,9 +90,10 @@ xla_test(
         "gpu",
         "cpu",
     ],
-    shard_count = 48,
+    shard_count = 50,
     tags = [
         "optonly",
+        "test_xla_cpu_thunks",
         # This is a big test that we skip for capacity reasons in OSS testing.
         "no_oss",
         # TODO(b/151340488): Timed out on 2020-03-18.
@@ -107,9 +115,10 @@ xla_test(
         "gpu",
         "cpu",
     ],
-    shard_count = 48,
+    shard_count = 50,
     tags = [
         "optonly",
+        "test_xla_cpu_thunks",
         # This is a big test that we skip for capacity reasons in OSS testing.
         "no_oss",
     ],
@@ -132,9 +141,10 @@ xla_test(
         "gpu",
         "cpu",
     ],
-    shard_count = 48,
+    shard_count = 50,
     tags = [
         "optonly",
+        "test_xla_cpu_thunks",
         # This is a big test that we skip for capacity reasons in OSS testing.
         "no_oss",
     ],
@@ -151,9 +161,10 @@ xla_test(
         "gpu",
         "cpu",
     ],
-    shard_count = 48,
+    shard_count = 50,
     tags = [
         "optonly",
+        "test_xla_cpu_thunks",
         # This is a big test that we skip for capacity reasons in OSS testing.
         "no_oss",
     ],
